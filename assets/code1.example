@@ -1,0 +1,6 @@
+<MyChart>
+  <Axes />
+  <Data />
+  <InteractionLayer />
+  <Annotations />
+</MyChart>

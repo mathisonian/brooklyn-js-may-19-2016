@@ -1,0 +1,12 @@
+<div position="relative">
+  <svg>
+    <Axes />
+  </svg>
+  <canvas>
+    <Data />
+    <InteractionLayer />
+  </canvas>
+  <svg>
+    <Annotations />
+  </svg>
+</svg>

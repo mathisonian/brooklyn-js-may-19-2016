@@ -37,133 +37,170 @@ require("spectacle/lib/themes/default/index.css");
 
 
 const images = {
-  city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
-  logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
+  sandwich: require('../assets/sandwich.svg'),
+  pix1: require('../assets/pix1.svg'),
+  pix2: require('../assets/pix2.svg'),
+  chart: require('../assets/chart.png'),
+  pharm: require('../assets/pharm.jpg'),
+  anatomy1: require('../assets/anatomy1.png'),
+  anatomy2: require('../assets/anatomy2.png'),
+  anatomy3: require('../assets/anatomy3.png'),
+  architect: require('../assets/architect.png'),
 };
 
 preloader(images);
 
 const theme = createTheme({
-  primary: "#ff4081"
+  primary: "#ffffff",
+  secondary: '#000000'
 });
+
+console.log(theme);
+theme.screen.components.codePane.pre.fontSize = '2.0rem';
+theme.screen.components.codePane.pre.width = '75%';
+theme.screen.components.codePane.pre.minWidth = 0;
 
 export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
-          <Slide transition={["zoom"]} bgColor="primary">
+        <Deck transition={["fade"]} transitionDuration={500}>
+          <Slide bgColor="primary">
+            <Image width={'50%'} src={images.sandwich} />
             <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle
+              Data Sandwich
             </Heading>
-            <Heading size={1} fit caps>
-              A ReactJS Presentation Library
-            </Heading>
-            <Heading size={1} fit caps textColor="black">
-              Where You Can Write Your Decks In JSX
-            </Heading>
-            <Link href="https://github.com/FormidableLabs/spectacle">
-              <Text bold caps textColor="tertiary">View on Github</Text>
-            </Link>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+            <Link href="http://www.mathisonian.com">@mathisonian</Link>
           </Slide>
-          <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
-            <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
-            <Heading size={2} caps fit textColor="primary" textFont="primary">
-              Wait what?
-            </Heading>
+          <Slide>
+            <Fill>
+              <iframe src="http://delicate-boundary.surge.sh/" width="100%" height="600px" scrolling="no" style={{display: 'block', border: 'none', overflow: 'hidden'}} />
+            </Fill>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+          <Slide notes="You can even put notes on your slide. How awesome is that?">
+            <Fill>
+              <iframe src="http://minimal.be/lab/fluGL/" width="100%" height="600px" scrolling="no" style={{display: 'block', border: 'none', overflow: 'hidden'}} />
+              <Link href="http://minimal.be/lab/fluGL">http://minimal.be/lab/fluGL</Link>
+            </Fill>
+          </Slide>
+          <Slide bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Image width="100%" src={images.pix1}/>
+          </Slide>
+          <Slide bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Image width="100%" src={images.pix2}/>
+          </Slide>
+          <Slide bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Image width="100%" src={images.chart}/>
+            <Link href="https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx</Link>
+          </Slide>
+          <Slide bgImage={images.pharm.replace("/", "")} bgDarken={0.5}>
+            <Appear fid="1">
+              <Heading size={1} caps textColor="primary">
+                It is our job to choose the proper technologies
+              </Heading>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Fill>
+              <Text lineHeight={1} textColor="black">
+                {"What's in a chart?"}
+              </Text>
+              <List>
+                <ListItem>Axes and labels</ListItem>
+                <ListItem>Data</ListItem>
+                <ListItem>Annotations</ListItem>
+                <ListItem>Interactivity Layer</ListItem>
+              </List>
+            </Fill>
+          </Slide>
+          <Slide bgColor="primary">
+            <Image src={images.anatomy1}/>
+          </Slide>
+          <Slide bgColor="primary">
+            <Image src={images.anatomy2}/>
+          </Slide>
+          <Slide bgColor="primary">
+            <Image src={images.anatomy3}/>
+          </Slide>
+          <Slide>
             <CodePane
               lang="jsx"
-              source={require("raw!../assets/deck.example")}
+              source={require("raw!../assets/code1.example")}
               margin="20px auto"
             />
           </Slide>
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                Full Width
-              </Heading>
-            </Appear>
-            <Appear fid="2">
-              <Heading size={1} caps fit textColor="tertiary">
-                Adjustable Darkness
-              </Heading>
-            </Appear>
-            <Appear fid="3">
-              <Heading size={1} caps fit textColor="primary">
-                Background Imagery
-              </Heading>
-            </Appear>
+          <Slide>
+            <CodePane
+              lang="jsx"
+              source={require("raw!../assets/code2.example")}
+              margin="20px auto"
+            />
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Flexible Layouts</Heading>
-            <Layout>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-            </Layout>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="black">
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
-              Inline Markdown
-            </Heading>
-            <Markdown>
-              {`
-![Markdown Logo](${images.markdown.replace("/", "")})
-
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
-            </Markdown>
-          </Slide>
-          <Slide transition={["slide", "spin"]} bgColor="primary">
-            <Heading caps fit size={1} textColor="tertiary">
-              Smooth
-            </Heading>
-            <Heading caps fit size={1} textColor="secondary">
-              Combinable Transitions
-            </Heading>
-          </Slide>
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Slide bgColor="primary">
+            <Text lineHeight={1} textColor="black">
+              SVG is great for:
+            </Text>
             <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
+              <ListItem>Axes</ListItem>
+              <ListItem>Text</ListItem>
+              <ListItem>Annotations, arrows</ListItem>
+              <ListItem>DOM events</ListItem>
             </List>
           </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
-            </Heading>
-            <Interactive/>
+          <Slide>
+            <CodePane
+              lang="jsx"
+              source={require("raw!../assets/code3.example")}
+              margin="20px auto"
+            />
           </Slide>
-          <Slide transition={["spin", "slide"]} bgColor="tertiary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-              Made with love in Seattle by
+          <Slide bgColor="primary">
+            <Image width="100%" src={images.architect}/>
+          </Slide>
+          <Slide>
+            <Fill>
+              <Link href="http://www.nytimes.com/interactive/2016/04/29/upshot/money-race-and-success-how-your-school-district-compares.html">http://www.nytimes.com/interactive/2016/04/29/upshot/money-race-and-success-how-your-school-district-compares.html?_r=0</Link>
+            </Fill>
+          </Slide>
+          <Slide>
+            <Fill>
+              <Link href="http://projects.fivethirtyeight.com/sumo/">http://projects.fivethirtyeight.com/sumo/</Link>
+            </Fill>
+          </Slide>
+          <Slide bgColor="primary">
+            <Text lineHeight={1} textColor="black">
+              Strategies for adding interactivity to canvas:
+            </Text>
+            <List>
+              <Appear><ListItem>Pixel Color</ListItem></Appear>
+              <Appear><ListItem>Voronoi</ListItem></Appear>
+              <Appear><ListItem>Quad Tree - <Link href="http://bl.ocks.org/veltman/1b43f61887e89c371f1c8c73341540a3">http://bl.ocks.org/veltman/1b43f6...</Link></ListItem></Appear>
+            </List>
+          </Slide>
+          <Slide bgColor="primary">
+            <Text lineHeight={1} textColor="black">
+              Further work:
+            </Text>
+            <List>
+              <Appear><ListItem>Component-ization of chart elements - <Link href="https://github.com/FormidableLabs/victory">https://github.com/FormidableLabs/victory</Link></ListItem></Appear>
+              <Appear><ListItem>Data driven WebGL - see <Link href="https://github.com/mikolalysenko/regl">https://github.com/mikolalysenko/regl</Link></ListItem></Appear>
+            </List>
+          </Slide>
+          <Slide bgColor="primary">
+            <Heading size={6} fit caps textColor="black">
+              Thank you!
             </Heading>
-            <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
+            <Link href="https://github.com/mathisonian">@mathisonian</Link>
+            <Text lineHeight={1} textColor="black">
+              Talk to me about:
+            </Text>
+            <List>
+              <ListItem>{"FiveThirtyEight - journalism + javascript (we're hiring)"}</ListItem>
+              <ListItem>{"HHMI Janelia - building tools for open science (with javascript)"}</ListItem>
+            </List>
+            <Text>
+              <small><i>Attribution: <a href="https://thenounproject.com/search/?q=sandwich&i=444858">Sandwich SVG</a>, <a href="https://www.flickr.com/photos/apothecary/25324916930/in/photolist-EzSPuN-5kK8Yo-bqrSeR-JHoVj-qwN48P-21Rhg-21Rhf-21Rhh-5iQHan-21QbF-h2Vfh1-4AVuP-cwNzms-fQ4tdJ-4AXST-4qBKRw-bj4WMK-hVaRb4-9kRvca-h8gGcP-djWVWT-47CVbr-47FtPC-2YFVh5-53VFpy-4HBE9-4qvYHc-CchLW-bLMZKx-47BpAk-8ay67q-dCfZFF-bxRHxA-6Tayar-qh9tP6-3Z3Cfu-3gkdUF-eAKGsw-7cYfsH-kZmwB-mQPFqL-fcmLwC-8f8nBs-R5JTm-dy5H5F-6tgUgR-3Hpb8g-cT1ZjJ-GiFLh-2H1oSS">Pharmacy Image</a></i></small>
+            </Text>
           </Slide>
         </Deck>
       </Spectacle>
