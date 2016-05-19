@@ -44,6 +44,7 @@ const images = {
   pharm: require('../assets/pharm.jpg'),
   anatomy1: require('../assets/anatomy1.png'),
   anatomy2: require('../assets/anatomy2.png'),
+  anatomy25: require('../assets/anatomy2.5.png'),
   anatomy3: require('../assets/anatomy3.png'),
   architect: require('../assets/architect.png'),
 };
@@ -59,6 +60,16 @@ console.log(theme);
 theme.screen.components.codePane.pre.fontSize = '2.0rem';
 theme.screen.components.codePane.pre.width = '75%';
 theme.screen.components.codePane.pre.minWidth = 0;
+console.log(theme.screen)
+theme.screen.progress.pacman.pacmanBottom.background = 'black';
+theme.screen.progress.pacman.pacmanTop.background = 'black';
+theme.screen.progress.pacman.point.borderColor = 'black';
+//
+// borderColor
+// :
+// "white"
+
+
 
 export default class Presentation extends React.Component {
   render() {
@@ -89,16 +100,16 @@ export default class Presentation extends React.Component {
           <Slide bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
             <Image width="100%" src={images.pix2}/>
           </Slide>
-          <Slide bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <Image width="100%" src={images.chart}/>
-            <Link href="https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx</Link>
-          </Slide>
           <Slide bgImage={images.pharm.replace("/", "")} bgDarken={0.5}>
             <Appear fid="1">
               <Heading size={1} caps textColor="primary">
                 It is our job to choose the proper technologies
               </Heading>
             </Appear>
+          </Slide>
+          <Slide bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Image width="100%" src={images.chart}/>
+            <Appear><Link href="https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx</Link></Appear>
           </Slide>
           <Slide>
             <Fill>
@@ -118,6 +129,9 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide bgColor="primary">
             <Image src={images.anatomy2}/>
+          </Slide>
+          <Slide bgColor="primary">
+            <Image src={images.anatomy25}/>
           </Slide>
           <Slide bgColor="primary">
             <Image src={images.anatomy3}/>
@@ -172,6 +186,7 @@ export default class Presentation extends React.Component {
               Strategies for adding interactivity to canvas:
             </Text>
             <List>
+              <Appear><ListItem>Hit Region - <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility#Hit_regions">Mozilla Link</Link></ListItem></Appear>
               <Appear><ListItem>Pixel Color</ListItem></Appear>
               <Appear><ListItem>Voronoi</ListItem></Appear>
               <Appear><ListItem>Quad Tree - <Link href="http://bl.ocks.org/veltman/1b43f61887e89c371f1c8c73341540a3">http://bl.ocks.org/veltman/1b43f6...</Link></ListItem></Appear>
