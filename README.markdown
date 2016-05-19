@@ -1,4 +1,6 @@
-# Spectacle Boilerplate
+# Brooklyn.js slides
+
+http://hurried-sweater.surge.sh/
 
 ## Reference
 
